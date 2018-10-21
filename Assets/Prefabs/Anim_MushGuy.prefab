@@ -51,10 +51,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4474945729171270}
   - component: {fileID: 95019959355284214}
+  - component: {fileID: 136777532761560222}
   - component: {fileID: 114940157228147538}
+  - component: {fileID: 114506133543385042}
   m_Layer: 0
   m_Name: Anim_MushGuy
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +461,7 @@ Transform:
   m_GameObject: {fileID: 1185096987773066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.473729, y: -0.0000007748604, z: -0.86672485}
-  m_LocalScale: {x: 11.060995, y: 11.061, z: 11.061}
+  m_LocalScale: {x: 6.0739856, y: 6.0739884, z: 6.0739884}
   m_Children:
   - {fileID: 4211875029079656}
   - {fileID: 4044361295260092}
@@ -639,6 +641,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114506133543385042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1185096987773066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621a3411043bc8d498a317a42255a55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 20
+  currentHealth: 0
 --- !u!114 &114940157228147538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,6 +667,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player0: {fileID: 0}
   _player1: {fileID: 0}
+  m_attackRange: 2
+  m_fuseTimer: 60
+  m_fuseTickAmount: 5
+  m_fuseThreshold: 100
+  tickColor: {r: 0.375, g: 0, b: 0, a: 1}
+--- !u!136 &136777532761560222
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1185096987773066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!137 &137820773501171668
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

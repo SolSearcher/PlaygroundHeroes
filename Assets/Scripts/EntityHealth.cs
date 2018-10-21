@@ -27,16 +27,20 @@ public class EntityHealth : MonoBehaviour
 
     // }
 
-    public void TakeDamage(int amount)
+    public bool TakeDamage(int amount)
     {
         //damaged = true;
         Debug.Log(currentHealth);
         currentHealth -= amount;
 
+        print("ouch, hp = " + currentHealth);
         // Death Check
         if (currentHealth < 0)
         {
+            
             print("#ded");
+            return true; //killed em
         }
+        return false;
     }
 }
