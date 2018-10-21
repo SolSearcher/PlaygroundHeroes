@@ -22,6 +22,8 @@ public class KnightSword : MonoBehaviour
             Player.isAttacking = false;
             this.gameObject.SetActive(false);
             Debug.Log("entered");
+            
+            //we need to call a function inside the other entity to recieve damage and die
         }
     }
 }
