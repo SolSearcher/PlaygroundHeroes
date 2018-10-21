@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
         stamina = Mathf.Clamp(stamina + 30f * Time.deltaTime, -30f, 100f);
     }
 
-    /*  Original Move() I had problems with it so I'm trying to rewrite it now - Reed
-    protected void Move()
+    //  Original Move() I had problems with it so I'm trying to rewrite it now - Reed
+    /*protected void Move()
     {
         Vector3 camRotation = Camera.transform.eulerAngles; //Get camera rotation
 
@@ -60,17 +60,17 @@ public class PlayerController : MonoBehaviour
 
         if (inputVector.magnitude > .01f)
         {
-            rb.MovePosition(transform.position + inputVector*_moveSpeedModifier); //move rigidbody
+            rb.MovePosition(transform.position + inputVector); //move rigidbody
 
             transform.LookAt(transform.position + inputVector);
         }
-    }
-    */
+    }*/
+    
 
 
     //        transform.Translate(Vector3.forward * Time.deltaTime);
 
-
+    
     protected void Move()
     {
         Vector3 camRotation = Camera.transform.eulerAngles; //Get camera rotation
