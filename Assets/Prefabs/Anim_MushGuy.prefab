@@ -665,8 +665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4168a28dacee294459e377b02c6fe0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player0: {fileID: 0}
-  _player1: {fileID: 0}
+  m_explosion: {fileID: 1121913258537768, guid: d694ba978e372074db3572d3688878cd,
+    type: 2}
   m_attackRange: 2
   m_fuseTimer: 60
   m_fuseTickAmount: 5

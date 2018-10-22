@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     //Players to target
-    public GameObject _player0;
-    public GameObject _player1;
+    //public GameObject _player0;
+    //public GameObject _player1;
+    public GameObject m_explosion;
 
     //Attack tweak variables
     public float m_attackRange = 1;
@@ -15,6 +16,7 @@ public class EnemyFollow : MonoBehaviour
     public float m_fuseTimer = 1200;
     public float m_fuseTickAmount = 5;
     public float m_fuseThreshold = 10;
+    public float m_lifetime = 1;
 
     private float currentFuseTime;
     public Color tickColor = Color.red;
@@ -27,6 +29,7 @@ public class EnemyFollow : MonoBehaviour
 
     bool primed = false;
     bool attacking = false;
+    bool damageRead = false;
 
     //private GameObject target;
 
@@ -57,8 +60,12 @@ public class EnemyFollow : MonoBehaviour
             if (fuseTime())
             {
                 //Boom
+
                 //print("Boom");
-                attacking = false;
+                Instantiate(m_explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject, m_lifetime);
+
+                //attacking = false;
             }
             //print("already Attacking");
         }
@@ -135,13 +142,19 @@ public class EnemyFollow : MonoBehaviour
     //Walks at the closer of the two players
     private GameObject chooseTarget()
     {
-        if (distTo(_player0) < distTo(_player1))
+        GameObject[] objs;
+        objs = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closestPlayer = objs[0];
+
+        
+
+        if (distTo(objs[0]) < distTo(objs[1]))
         {
-            return _player0;
+            return objs[0];
         }
         else
         {
-            return _player1;
+            return objs[1];
         }
     }
 

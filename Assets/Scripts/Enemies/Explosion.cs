@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour {
 
-    
+    public float m_lifetime = 1;
+    public bool alreadyHit = false;
+
+    protected void Start()
+    {
+        Destroy(gameObject, m_lifetime);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
 
-        //this.gameObject.SetActive(false);
-        //Debug.Log("entered");
-        print("Boom");
-            if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(10)) //if they have no health destroy them >.<
-            {
-                Destroy(other.gameObject);
-            }
+        if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(10)) //if they have no health destroy them >.<
+        {
+            Destroy(other.gameObject);
+        }
 
-        Destroy(this.gameObject);
+
     }
-    
+
 }

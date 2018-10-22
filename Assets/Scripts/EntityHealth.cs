@@ -6,11 +6,16 @@ public class EntityHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
-
+    bool hit = false;
 
     void Start()
     {
         currentHealth = startingHealth;
+    }
+
+    void FixedUpdate()
+    {
+
     }
 
     // void Update () 
@@ -33,7 +38,7 @@ public class EntityHealth : MonoBehaviour
         Debug.Log(currentHealth);
         currentHealth -= amount;
 
-        print("ouch, hp = " + currentHealth);
+        //print("ouch, hp = " + currentHealth);
         // Death Check
         if (currentHealth < 0)
         {

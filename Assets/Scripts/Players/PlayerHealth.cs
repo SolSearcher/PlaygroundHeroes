@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour 
+public class PlayerHealth : EntityHealth 
 {
-	public int startingHealth = 100;
-	public int currentHealth;
+
 	public Slider healthSlider;
 	//public Image damageImage;
 	//public float flashSpeed = 5f;
@@ -18,6 +17,11 @@ public class PlayerHealth : MonoBehaviour
 	{
 		currentHealth = startingHealth;
 	}
+
+    void Update()
+    {
+        healthSlider.value = currentHealth;
+    }
 
     // void Update () 
     // {
@@ -33,16 +37,4 @@ public class PlayerHealth : MonoBehaviour
 
     // }
 
-    public void TakeDamage(int amount)
-    {
-        //damaged = true;
-        Debug.Log(currentHealth);
-        currentHealth -= amount;
-
-        // Death Check
-        if (currentHealth < 0)
-        {
-            print("#ded");
-        }
-    }
 }
