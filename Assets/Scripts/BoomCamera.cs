@@ -21,14 +21,17 @@ public class BoomCamera : MonoBehaviour
         isLocked = false;
     }
 
-    // We use late update so all the player calculations are done before the camera calculations
-    void LateUpdate ()
+    private void Update()
     {
         if (!playerControl)
         {
             UpdateFocusLocation();
         }
+    }
 
+    // We use late update so all the player calculations are done before the camera calculations
+    void LateUpdate ()
+    {
         if (Input.GetKeyDown("space"))
             isLocked = !isLocked;
 

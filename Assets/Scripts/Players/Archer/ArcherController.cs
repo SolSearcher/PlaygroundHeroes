@@ -13,7 +13,7 @@ public class ArcherController : PlayerController
     private Quaternion bowFireRot;
     private bool firing;
 	// Use this for initialization
-	protected void Start ()
+	protected new void Start ()
     {
         base.Start();
         bowDownPos = new Vector3(-0.2f, -0.13f, 0.78f);
@@ -45,19 +45,22 @@ public class ArcherController : PlayerController
             if (Input.GetButtonDown("Dodge" + playerNum))
                 Dodge();
 
-            if (isDodging)
+            if (!firing)
             {
-                DodgeMover();
+                if (isDodging)
+                {
+                    DodgeMover();
+                }
+                else
+                    Move();
             }
-
-            if (!isDodging)
-                Move();
         }
         stamina = Mathf.Clamp(stamina + 30f * Time.deltaTime, -30f, 100f);
 	}
 
     void GetInput()
     {
+        CalculateInputVector();
         if (Input.GetButtonDown("Fire" + playerNum))
         {
             firing = true;

@@ -15,11 +15,15 @@ public class PlayerController : MonoBehaviour
     protected bool isDodging;
     protected float health;
     protected float stamina;
+    protected float dodgeTimeDefault;
+    protected float currDodgeTime;
     
     protected void Start()
     {
         health = 100f;
         stamina = 100f;
+        dodgeTimeDefault = 0.66f;
+        currDodgeTime = 0f;
         inputVector = new Vector3(0, 0, 0);
         dodgeLocation = new Vector3(0, 0, 0);
         rb = GetComponent<Rigidbody>();
@@ -28,22 +32,20 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        CalculateInputVector();
         if (Input.GetButtonDown("Dodge" + playerNum))
             Dodge();
-
         if (isDodging)
         {
             DodgeMover();
         }
-
-        if (!isDodging)
+        else
             Move();
 
         stamina = Mathf.Clamp(stamina + 30f * Time.deltaTime, -30f, 100f);
     }
 
-    //  Original Move() I had problems with it so I'm trying to rewrite it now - Reed
-    /*protected void Move()
+    protected void CalculateInputVector()
     {
         Vector3 camRotation = Camera.transform.eulerAngles; //Get camera rotation
 
@@ -53,55 +55,39 @@ public class PlayerController : MonoBehaviour
 
         Vector3 camRight = Quaternion.Euler(0, 90, 0) * camForward; //rotate THAT by 90 degrees to get right vector
 
-        camRight *= Input.GetAxis("Horizontal" + playerNum) * Time.deltaTime * speed; //get input
-        camForward *= Input.GetAxis("Vertical" + playerNum) * Time.deltaTime * speed;
+        camRight *= Input.GetAxis("Horizontal" + playerNum); //get input
+        camForward *= Input.GetAxis("Vertical" + playerNum);
 
-        inputVector = camRight + camForward;
+        inputVector = (camRight + camForward) * Time.deltaTime * speed;
+    }
 
-        if (inputVector.magnitude > .01f)
-        {
-            rb.MovePosition(transform.position + inputVector); //move rigidbody
-
-            transform.LookAt(transform.position + inputVector);
-        }
-    }*/
-    
-
-
-    //        transform.Translate(Vector3.forward * Time.deltaTime);
-
-    
     protected void Move()
     {
-        Vector3 camRotation = Camera.transform.eulerAngles; //Get camera rotation
-
-        //Start with forward vector
-        Vector3 camForward = new Vector3(0, 0, 1);
-        camForward = Quaternion.Euler(0, camRotation.y, 0) * camForward; //Rotate it by camera's y (yaw) rotation, this gets camera forward vector
-
-        Vector3 camRight = Quaternion.Euler(0, 90, 0) * camForward; //rotate THAT by 90 degrees to get right vector
-
-        camRight *= Input.GetAxis("Horizontal" + playerNum) * Time.deltaTime * speed; //get input
-        camForward *= Input.GetAxis("Vertical" + playerNum) * Time.deltaTime * speed;
-
-        inputVector = camRight + camForward;
-
-        if (inputVector.magnitude > .05f)
+        Vector3 newInput = inputVector.normalized;
+        if (inputVector.magnitude > .01f)
         {
-            //rb.MovePosition(transform.position + inputVector * _moveSpeedModifier); //move rigidbody
-            transform.Translate(Vector3.forward * Time.deltaTime *8);
-
+            //rb.MovePosition((transform.position + newInput * Time.deltaTime * speed)); //move rigidbody
             transform.LookAt(transform.position + inputVector);
+            transform.Translate(inputVector, Space.World);
         }
     }
 
 
     protected void DodgeMover()
     {
-        if (Vector3.Distance(transform.position, dodgeLocation) > 0.1)
-            rb.MovePosition(Vector3.Lerp(transform.position, dodgeLocation, 12f * Time.deltaTime));
+        currDodgeTime += Time.deltaTime;
+        if (currDodgeTime < dodgeTimeDefault)
+        {
+            //rb.MovePosition(Vector3.Lerp(transform.position, dodgeLocation, 12f * Time.deltaTime));
+            //Debug.Log("DodgeLocation: " + dodgeLocation + "\ntransform.position: " + transform.position + "\nsub: " + (dodgeLocation - transform.position));
+            transform.Translate((dodgeLocation - transform.position) * 12f * Time.deltaTime, Space.World);
+            //rb.AddForce(inputVector.normalized * (dodgeTimeDefault - currDodgeTime));
+        }
         else
+        {
+            currDodgeTime = 0f;
             isDodging = false;
+        }
     }
 
     protected void Dodge()
