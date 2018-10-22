@@ -5,7 +5,6 @@ using UnityEngine;
 public class Explosion : MonoBehaviour {
 
     public float m_lifetime = 1;
-    public bool alreadyHit = false;
 
     protected void Start()
     {

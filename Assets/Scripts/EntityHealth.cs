@@ -35,7 +35,7 @@ public class EntityHealth : MonoBehaviour
     public bool TakeDamage(int amount)
     {
         //damaged = true;
-        Debug.Log(currentHealth);
+        //Debug.Log(currentHealth);
         currentHealth -= amount;
 
         //print("ouch, hp = " + currentHealth);
