@@ -16,7 +16,7 @@ public class ArrowCollisions : MonoBehaviour {
         //print(other);  DEBUG
         if (other.gameObject.GetComponent<EntityHealth>()!=null) //if they have no health destroy them >.<
         {
-            if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(20)){
+            if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(15)){
                 Destroy(other.gameObject);
 
             }
