@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public int playerNum;
     public float speed = 5f;
     public float _moveSpeedModifier = 500f;
-
+    public Slider stamSlider;
+         
     protected Vector3 inputVector;
     protected Rigidbody rb;
     protected Vector3 dodgeLocation;
@@ -78,10 +80,7 @@ public class PlayerController : MonoBehaviour
         currDodgeTime += Time.deltaTime;
         if (currDodgeTime < dodgeTimeDefault)
         {
-            //rb.MovePosition(Vector3.Lerp(transform.position, dodgeLocation, 12f * Time.deltaTime));
-            //Debug.Log("DodgeLocation: " + dodgeLocation + "\ntransform.position: " + transform.position + "\nsub: " + (dodgeLocation - transform.position));
             transform.Translate((dodgeLocation - transform.position) * 12f * Time.deltaTime, Space.World);
-            //rb.AddForce(inputVector.normalized * (dodgeTimeDefault - currDodgeTime));
         }
         else
         {

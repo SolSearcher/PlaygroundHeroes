@@ -20,6 +20,7 @@ public class KnightController : PlayerController
 	// Update is called once per frame
 	void Update ()
     {
+        CalculateInputVector();
         if (Input.GetButtonDown("Dodge" + playerNum))
             Dodge();
 
@@ -27,8 +28,7 @@ public class KnightController : PlayerController
         {
             DodgeMover();
         }
-
-        if(!isDodging)
+        else if(!isAttacking)
             Move();
 
         if (inputVector.magnitude > .03f)
@@ -36,14 +36,16 @@ public class KnightController : PlayerController
         else
             animator.SetBool("Moving", false);
 
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && stamina > 0f)
             Attack();
 
-        stamina = Mathf.Clamp(stamina + 30f * Time.deltaTime, -30f, 100f);
+        stamina = Mathf.Clamp(stamina + 20f * Time.deltaTime, -30f, 100f);
+        stamSlider.value = stamina;
     }
 
     void Attack ()
     {
+        stamina -= 40f;
         animator.SetTrigger("Attack1Trigger");
     }
 
