@@ -5,7 +5,6 @@ using UnityEngine;
 public class ArcherController : PlayerController
 {
     public GameObject Bow;
-    public GameObject m_ArrowPrefab;
     public GameObject Arrow;
 
     private Vector3 bowDownPos;
@@ -14,7 +13,7 @@ public class ArcherController : PlayerController
     private Quaternion bowFireRot;
     private bool firing;
 	// Use this for initialization
-	protected void Start ()
+	protected new void Start ()
     {
         base.Start();
         bowDownPos = new Vector3(-0.2f, -0.13f, 0.78f);
@@ -46,29 +45,34 @@ public class ArcherController : PlayerController
             if (Input.GetButtonDown("Dodge" + playerNum))
                 Dodge();
 
-            if (isDodging)
+            if (!firing)
             {
-                DodgeMover();
+                if (isDodging)
+                {
+                    DodgeMover();
+                }
+                else
+                    Move();
             }
-
-            if (!isDodging)
-                Move();
         }
-        stamina = Mathf.Clamp(stamina + 30f * Time.deltaTime, -30f, 100f);
+        stamina = Mathf.Clamp(stamina + 20f * Time.deltaTime, -30f, 100f);
+        stamSlider.value = stamina;
 	}
 
     void GetInput()
     {
-        if (Input.GetButtonDown("Fire" + playerNum))
+        CalculateInputVector();
+        if (Input.GetButtonDown("Fire" + playerNum) && stamina > 10f)
         {
             firing = true;
             Camera.playerControl = true;
+            stamina -= 40f;
             Bow.transform.localPosition = bowFirePos;
             Bow.transform.localRotation = bowFireRot;
 
             Vector3 newRotation = transform.rotation.eulerAngles;
             Vector3 newPosition = transform.position + transform.forward;
-            Arrow = Instantiate(m_ArrowPrefab, newPosition, Quaternion.Euler(90, newRotation.y, newRotation.z)) as GameObject;
+            Arrow = Instantiate(Arrow, newPosition, Quaternion.Euler(90, newRotation.y, newRotation.z)) as GameObject;
         }
         if (Input.GetButtonUp("Fire" + playerNum))
         {
