@@ -13,16 +13,14 @@ public class ArrowCollisions : MonoBehaviour {
     //Collision check and damage
     private void OnTriggerEnter(Collider other) {
         //print(other);  DEBUG
-        if (other.gameObject.GetComponent<EntityHealth>()!=null) //if they have no health destroy them >.<
-        {
-            if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(15)){
-                Destroy(other.gameObject);
-
-            }
-        }
+        
         if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
         {
             other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
+        }
+        if (other.gameObject.GetComponent<EnemyStats>().health.CurrentVal > 0)
+        {
+            other.gameObject.GetComponent<EnemyStats>().health.CurrentVal -= 10;
         }
     }
     

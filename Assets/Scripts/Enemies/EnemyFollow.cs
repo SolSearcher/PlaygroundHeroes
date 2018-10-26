@@ -29,7 +29,7 @@ public class EnemyFollow : MonoBehaviour
 
     bool primed = false;
     bool attacking = false;
-    bool damageRead = false;
+
 
     //private GameObject target;
 

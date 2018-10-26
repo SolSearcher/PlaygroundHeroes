@@ -56,17 +56,17 @@ public class ArcherController : PlayerController
                     Move();
             }
         }
-        stamina = Mathf.Clamp(stamina + 20f * Time.deltaTime, -30f, 100f);
-	}
+        GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
+    }
 
     void GetInput()
     {
         CalculateInputVector();
-        if (Input.GetButtonDown("Fire" + playerNum) && stamina > 10f)
+        if (Input.GetButtonDown("Fire" + playerNum) && GetComponent<ArcherStats>().energy.CurrentVal > 20f)
         {
             firing = true;
             Camera.playerControl = true;
-            stamina -= 40f;
+            GetComponent<ArcherStats>().energy.CurrentVal -= 20f;
             Bow.transform.localPosition = bowFirePos;
             Bow.transform.localRotation = bowFireRot;
 

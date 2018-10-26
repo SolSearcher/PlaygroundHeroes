@@ -31,10 +31,10 @@ public class KnightSword : MonoBehaviour
                 Debug.Log(other.gameObject.GetComponent<ArcherStats>().health.CurrentVal);
                 other.gameObject.GetComponent<ArcherStats>().health.CurrentVal -= 30;
             }
-            if (other.gameObject.GetComponent<EnemyHealth>().health.CurrentVal > 0)
+            if (other.gameObject.GetComponent<EnemyStats>().health.CurrentVal > 0)
             {
-                Debug.Log(other.gameObject.GetComponent<EnemyHealth>().health.CurrentVal);
-                other.gameObject.GetComponent<EnemyHealth>().health.CurrentVal -= 30;
+                Debug.Log(other.gameObject.GetComponent<EnemyStats>().health.CurrentVal);
+                other.gameObject.GetComponent<EnemyStats>().health.CurrentVal -= 30;
             }
         }
     }

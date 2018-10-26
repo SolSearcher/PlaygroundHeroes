@@ -36,7 +36,7 @@ public class KnightController : PlayerController
         else
             animator.SetBool("Moving", false);
 
-        if(Input.GetButtonDown("Fire1") && GetComponent<KnightStats>().energy.CurrentVal > 0f)
+        if(Input.GetButtonDown("Fire1") && GetComponent<KnightStats>().energy.CurrentVal > 40)
             Attack();
 
         GetComponent<KnightStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<KnightStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
@@ -51,6 +51,7 @@ public class KnightController : PlayerController
     {
         isAttacking = true;
         SwordCollidor.SetActive(true);
+        GetComponent<KnightStats>().energy.CurrentVal -= 40;
     }
 
     void AttackEnd()
