@@ -5306,6 +5306,10 @@ Prefab:
       propertyPath: stamSlider
       value: 
       objectReference: {fileID: 1572384908}
+    - target: {fileID: 1007141068916312, guid: 50ed63ba9210cad40b45d0700f64c2b5, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50ed63ba9210cad40b45d0700f64c2b5, type: 2}
   m_IsPrefabAsset: 0
