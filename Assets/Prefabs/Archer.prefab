@@ -188,8 +188,10 @@ MonoBehaviour:
   Camera: {fileID: 0}
   playerNum: 2
   speed: 10
+  _moveSpeedModifier: 500
+  stamSlider: {fileID: 0}
   Bow: {fileID: 1548542776168470}
-  Arrow: {fileID: 1502566673891990, guid: 757a7991ae3068242aba9ffa14f157ae, type: 2}
+  Arrow: {fileID: 1601480604293226, guid: 4f82dd4f6db8ea94b9160717779298f5, type: 2}
 --- !u!136 &136027322286370750
 CapsuleCollider:
   m_ObjectHideFlags: 1
