@@ -5310,6 +5310,12 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114996195644601066, guid: 50ed63ba9210cad40b45d0700f64c2b5,
+        type: 2}
+      propertyPath: m_arrowPrefab
+      value: 
+      objectReference: {fileID: 1601480604293226, guid: 4f82dd4f6db8ea94b9160717779298f5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50ed63ba9210cad40b45d0700f64c2b5, type: 2}
   m_IsPrefabAsset: 0

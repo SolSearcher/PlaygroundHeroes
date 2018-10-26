@@ -5,7 +5,8 @@ using UnityEngine;
 public class ArcherController : PlayerController
 {
     public GameObject Bow;
-    public GameObject Arrow;
+    public GameObject m_arrowPrefab;
+    private GameObject Arrow;
 
     private Vector3 bowDownPos;
     private Quaternion bowDownRot;
@@ -72,7 +73,7 @@ public class ArcherController : PlayerController
 
             Vector3 newRotation = transform.rotation.eulerAngles;
             Vector3 newPosition = transform.position + transform.forward;
-            Arrow = Instantiate(Arrow, newPosition, Quaternion.Euler(90, newRotation.y, newRotation.z)) as GameObject;
+            Arrow = Instantiate(m_arrowPrefab, newPosition, Quaternion.Euler(90, newRotation.y, newRotation.z)) as GameObject;
         }
         if (Input.GetButtonUp("Fire" + playerNum))
         {
@@ -81,7 +82,12 @@ public class ArcherController : PlayerController
             Bow.transform.localPosition = bowDownPos;
             Bow.transform.localRotation = bowDownRot;
 
-            Arrow.GetComponent<Rigidbody>().velocity = 50f * transform.forward;
+            if(Arrow != null)
+            {
+                Arrow.GetComponent<ArrowCollisions>().fire();
+                Arrow.GetComponent<Rigidbody>().velocity = 50f * transform.forward;
+            }
+            
         }
     }
 }

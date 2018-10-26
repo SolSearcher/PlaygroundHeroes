@@ -8,7 +8,6 @@ public class ArrowCollisions : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Destroy(gameObject, m_lifetime);  //kills the arrow after an amount of time
     }
 
     //Collision check and damage
@@ -21,5 +20,11 @@ public class ArrowCollisions : MonoBehaviour {
 
             }
         }
+    }
+    
+    public void fire()
+    {
+        Destroy(gameObject, m_lifetime);  //kills the arrow after an amount of time
+
     }
 }
