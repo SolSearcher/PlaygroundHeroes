@@ -20,6 +20,10 @@ public class ArrowCollisions : MonoBehaviour {
 
             }
         }
+        if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
+        {
+            other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
+        }
     }
     
     public void fire()

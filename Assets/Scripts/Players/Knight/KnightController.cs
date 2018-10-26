@@ -36,16 +36,14 @@ public class KnightController : PlayerController
         else
             animator.SetBool("Moving", false);
 
-        if(Input.GetButtonDown("Fire1") && stamina > 0f)
+        if(Input.GetButtonDown("Fire1") && GetComponent<KnightStats>().energy.CurrentVal > 0f)
             Attack();
 
-        stamina = Mathf.Clamp(stamina + 20f * Time.deltaTime, -30f, 100f);
-        stamSlider.value = stamina;
+        GetComponent<KnightStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<KnightStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
     }
 
     void Attack ()
     {
-        stamina -= 40f;
         animator.SetTrigger("Attack1Trigger");
     }
 

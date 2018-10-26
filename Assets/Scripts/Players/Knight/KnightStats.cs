@@ -5,9 +5,9 @@ using UnityEngine;
 public class KnightStats : MonoBehaviour {
 
     [SerializeField]
-    private Stat health;
+    public Stat health;
     [SerializeField]
-    private Stat energy;
+    public Stat energy;
 
     private void Awake()
     {

@@ -15,11 +15,15 @@ public class Explosion : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(10)) //if they have no health destroy them >.<
+        
+        if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
         }
-
+        if (other.gameObject.GetComponent<ArcherStats>().health.CurrentVal > 0)
+        {
+            other.gameObject.GetComponent<ArcherStats>().health.CurrentVal -= 10;
+        }
 
     }
 

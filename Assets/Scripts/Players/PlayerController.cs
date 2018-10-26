@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public int playerNum;
     public float speed = 5f;
     public float _moveSpeedModifier = 500f;
-    public Slider stamSlider;
          
     protected Vector3 inputVector;
     protected Rigidbody rb;

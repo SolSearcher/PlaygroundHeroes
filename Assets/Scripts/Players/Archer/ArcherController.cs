@@ -57,7 +57,6 @@ public class ArcherController : PlayerController
             }
         }
         stamina = Mathf.Clamp(stamina + 20f * Time.deltaTime, -30f, 100f);
-        stamSlider.value = stamina;
 	}
 
     void GetInput()
