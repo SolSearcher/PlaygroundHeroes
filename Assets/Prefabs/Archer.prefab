@@ -189,9 +189,8 @@ MonoBehaviour:
   playerNum: 2
   speed: 10
   _moveSpeedModifier: 500
-  stamSlider: {fileID: 0}
   Bow: {fileID: 1548542776168470}
-  Arrow: {fileID: 1601480604293226, guid: 4f82dd4f6db8ea94b9160717779298f5, type: 2}
+  m_arrowPrefab: {fileID: 0}
 --- !u!136 &136027322286370750
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -199,7 +198,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1007141068916312}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
