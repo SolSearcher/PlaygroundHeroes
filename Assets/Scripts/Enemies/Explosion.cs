@@ -16,15 +16,16 @@ public class Explosion : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.GetComponent<ArcherStats>().health.CurrentVal > 0)
+        if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<ArcherStats>().health.CurrentVal -= 10;
-        }
-
-
-        if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
-        {
-            other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
+            print("HITTING PLAYER");
+            if (other.gameObject.GetComponent<EntityHealth>() != null)
+            {
+                if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(20))
+                {
+                    Destroy(other.gameObject);
+                }
+            }
         }
 
     }

@@ -14,13 +14,20 @@ public class ArrowCollisions : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         //print(other);  DEBUG
         
-        if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
+        if(other.gameObject.GetComponent<KnightStats>() != null)
         {
-            other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
+            if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
+            {
+                other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
+            }
         }
-        if (other.gameObject.GetComponent<EnemyStats>().health.CurrentVal > 0)
+
+        if (other.gameObject.GetComponent<KnightStats>() != null)
         {
-            other.gameObject.GetComponent<EnemyStats>().health.CurrentVal -= 10;
+            if (other.gameObject.GetComponent<EnemyStats>().health.CurrentVal > 0)
+            {
+                other.gameObject.GetComponent<EnemyStats>().health.CurrentVal -= 10;
+            }
         }
     }
     

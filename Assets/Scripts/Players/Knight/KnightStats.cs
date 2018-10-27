@@ -2,21 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightStats : MonoBehaviour {
+public class KnightStats : EntityHealth {
 
-    [SerializeField]
-    public Stat health;
+
+    //Energy is different for players than enemies so it's all here
     [SerializeField]
     public Stat energy;
 
     private void Awake()
     {
-        health.Initialize();
         energy.Initialize();
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
