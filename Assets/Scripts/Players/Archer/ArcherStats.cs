@@ -10,6 +10,7 @@ public class ArcherStats : EntityHealth
 
     private void Awake()
     {
+        health.Initialize();
         energy.Initialize();
     }
 }
