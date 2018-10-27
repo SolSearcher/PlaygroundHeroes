@@ -13,20 +13,27 @@ public class ArrowCollisions : MonoBehaviour {
     //Collision check and damage
     private void OnTriggerEnter(Collider other) {
         //print(other);  DEBUG
-        
-        if(other.gameObject.GetComponent<KnightStats>() != null)
+
+        if (other.gameObject.tag == "Enemies")
         {
-            if (other.gameObject.GetComponent<KnightStats>().health.CurrentVal > 0)
+            print("HITTING ENEMY");
+            if (other.gameObject.GetComponent<EntityHealth>() != null)
             {
-                other.gameObject.GetComponent<KnightStats>().health.CurrentVal -= 10;
+                if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(20))
+                {
+                    Destroy(other.gameObject);
+                }
             }
         }
-
-        if (other.gameObject.GetComponent<KnightStats>() != null)
+        if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<EnemyStats>().health.CurrentVal > 0)
+            print("HITTING PLAYER");
+            if (other.gameObject.GetComponent<EntityHealth>() != null)
             {
-                other.gameObject.GetComponent<EnemyStats>().health.CurrentVal -= 10;
+                if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(20))
+                {
+                    Destroy(other.gameObject);
+                }
             }
         }
     }
