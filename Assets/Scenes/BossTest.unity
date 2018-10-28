@@ -276,7 +276,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a7441f1d5a8ae743bf566df921cc08d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.69
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a7441f1d5a8ae743bf566df921cc08d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -305,6 +305,11 @@ Prefab:
     - target: {fileID: 100000, guid: 4a7441f1d5a8ae743bf566df921cc08d, type: 2}
       propertyPath: m_TagString
       value: Enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 54470428796586970, guid: 4a7441f1d5a8ae743bf566df921cc08d,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7441f1d5a8ae743bf566df921cc08d, type: 2}

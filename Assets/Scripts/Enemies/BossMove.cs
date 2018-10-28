@@ -81,7 +81,7 @@ public class BossMove : MonoBehaviour {
     void EndAttack()
     {
         isAttacking = false;
-        hammerCollider.SetActive(true);
+        hammerCollider.SetActive(false);
         //SwordCollidor.SetActive(false);
     }
 

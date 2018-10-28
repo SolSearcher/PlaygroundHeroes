@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody rb;
     protected Vector3 dodgeLocation;
     protected bool isDodging;
+    protected bool isBlocking;
     protected float health;
     protected float stamina;
     protected float dodgeTimeDefault;
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
         stamina = 100f;
         dodgeTimeDefault = 0.66f;
         currDodgeTime = 0f;
+        isDodging = false;
+        isBlocking = false;
         inputVector = new Vector3(0, 0, 0);
         dodgeLocation = new Vector3(0, 0, 0);
         rb = GetComponent<Rigidbody>();

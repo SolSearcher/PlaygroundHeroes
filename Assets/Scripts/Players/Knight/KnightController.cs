@@ -6,7 +6,6 @@ public class KnightController : PlayerController
 {
     public GameObject SwordCollidor;
     public bool isAttacking;
-    public bool isBlocking;
     public GameObject Shield;
     private Animator animator;
     private Collider swordCollider;
@@ -17,7 +16,6 @@ public class KnightController : PlayerController
         base.Start();
         animator = GetComponent<Animator>();
         isAttacking = false;
-        isBlocking = false;
 	}
 	
 	// Update is called once per frame
