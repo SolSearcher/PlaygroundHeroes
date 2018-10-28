@@ -46,7 +46,7 @@ public class BossMove : MonoBehaviour {
         if (!isAttacking) { 
             if(!(distTo(target) < m_attackRange))
             {
-                //move();
+                move();
                 m_Animator.SetBool("Moving", true);
             }
             else if (!isWaiting)
@@ -57,14 +57,18 @@ public class BossMove : MonoBehaviour {
             }
         }
 
-        playerLocation = Vector3.Lerp(playerLocation, target.transform.position, .4f);
-        transform.LookAt(playerLocation);
+        /*Vector3 targetPos = target.transform.position;
+        targetPos.y = transform.position.y;
+        Debug.Log("target: " + targetPos + "\ncurrent: " + playerLocation);
+        playerLocation = Vector3.Lerp(playerLocation, targetPos, .1f);
+        Debug.Log("newCurrent: " + playerLocation);
+        transform.LookAt(playerLocation);*/
     }
 
 
     //move towards the player
     private void move() {
-        transform.LookAt(playerLocation);
+        transform.LookAt(target.transform.position);
     } 
     
 
