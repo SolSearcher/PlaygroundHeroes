@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 54385176367423342}
   - component: {fileID: 136912786412347694}
   - component: {fileID: 114043305880474788}
-  - component: {fileID: 114888487622702162}
+  - component: {fileID: 114547132252282822}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -1674,7 +1674,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659934843836332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.882925, y: 2.0540901e-17, z: -9.2508}
+  m_LocalPosition: {x: 8.721831, y: 0.05, z: -20.061127}
   m_LocalScale: {x: 0.54913557, y: 0.54913557, z: 0.54913557}
   m_Children:
   - {fileID: 4093279695758088}
@@ -1791,8 +1791,8 @@ Rigidbody:
   m_GameObject: {fileID: 1659934843836332}
   serializedVersion: 2
   m_Mass: 2.67
-  m_Drag: 0
-  m_AngularDrag: 0.35
+  m_Drag: 100
+  m_AngularDrag: 0.9
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 114043305880474788}
---- !u!114 &114888487622702162
+--- !u!114 &114547132252282822
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

@@ -18,6 +18,7 @@ public class BossMove : MonoBehaviour {
 
     private float currWaitTime;
     private bool isWaiting;
+    private Vector3 playerLocation;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +27,7 @@ public class BossMove : MonoBehaviour {
         isAttacking = false;
         isWaiting = false;
         currWaitTime = 0f;
+        playerLocation = transform.position;
 
         //gets players
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -44,7 +46,7 @@ public class BossMove : MonoBehaviour {
         if (!isAttacking) { 
             if(!(distTo(target) < m_attackRange))
             {
-                move();
+                //move();
                 m_Animator.SetBool("Moving", true);
             }
             else if (!isWaiting)
@@ -55,13 +57,14 @@ public class BossMove : MonoBehaviour {
             }
         }
 
-        transform.LookAt(target.GetComponent<Transform>().position);
+        playerLocation = Vector3.Lerp(playerLocation, target.transform.position, .4f);
+        transform.LookAt(playerLocation);
     }
 
 
     //move towards the player
     private void move() {
-        transform.LookAt(target.GetComponent<Transform>().position);
+        transform.LookAt(playerLocation);
     } 
     
 

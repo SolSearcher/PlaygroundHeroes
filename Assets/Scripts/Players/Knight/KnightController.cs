@@ -55,10 +55,13 @@ public class KnightController : PlayerController
         else
             animator.SetBool("Moving", false);
 
-        if(Input.GetButtonDown("Fire1") && GetComponent<ArcherStats>().energy.CurrentVal > 40)
+        if(Input.GetButtonDown("Fire1") && GetComponent<ArcherStats>().energy.CurrentVal > 15f)
             Attack();
-            
-        GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
+        
+        if(!isBlocking)
+            GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
+        else
+            GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 5f * Time.deltaTime, -30f, 100f);
     }
 
     void Attack ()
@@ -70,7 +73,7 @@ public class KnightController : PlayerController
     {
         isAttacking = true;
         SwordCollidor.SetActive(true);
-        GetComponent<ArcherStats>().energy.CurrentVal -= 40;
+        GetComponent<ArcherStats>().energy.CurrentVal -= 40f;
     }
 
     void AttackEnd()

@@ -16,10 +16,12 @@ public class BoomCamera : MonoBehaviour
     public bool playerControl = false;
 
     private bool isLocked;
+    private int playerNum;
 
     private void Start()
     {
         isLocked = false;
+        playerNum = player.playerNum;
     }
 
     private void Update()
@@ -33,7 +35,7 @@ public class BoomCamera : MonoBehaviour
     // We use late update so all the player calculations are done before the camera calculations
     void LateUpdate ()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButtonDown("Lock" + playerNum))
             isLocked = !isLocked;
 
         if(!isLocked)
@@ -44,6 +46,9 @@ public class BoomCamera : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(testEnemy.transform.position - focus.transform.position);
 
             focus.transform.rotation = Quaternion.Lerp(focus.transform.rotation, targetRotation, 0.05f);
+
+            if (playerNum == 2)
+                isLocked = false;
         }
 
         //Calculate the position of the camera by getting the focus's forward vector,
