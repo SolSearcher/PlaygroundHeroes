@@ -10,6 +10,7 @@ public class BoomCamera : MonoBehaviour
     public GameObject testEnemy;
 
     public float rotateSpeed = 2f;
+    public float startLength = 4f;
     public float boomLength = 4f;
     public float focusHeight = 1f;
     public bool playerControl = false;
@@ -89,6 +90,6 @@ public class BoomCamera : MonoBehaviour
         newPosition.y += focusHeight;
         focus.transform.position = Vector3.Lerp(focus.transform.position, newPosition, 16f * Time.deltaTime);
 
-        boomLength = Mathf.Lerp(boomLength, 4f, 8f * Time.deltaTime);
+        boomLength = Mathf.Lerp(boomLength, startLength, 8f * Time.deltaTime);
     }
 }
