@@ -302,6 +302,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a7441f1d5a8ae743bf566df921cc08d, type: 2}
+      propertyPath: m_TagString
+      value: Enemies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7441f1d5a8ae743bf566df921cc08d, type: 2}
   m_IsPrefabAsset: 0
@@ -545,6 +549,26 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c534e18d3b5b4a45a457e53a6ddcff2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1545117516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4a7441f1d5a8ae743bf566df921cc08d,
+    type: 2}
+  m_PrefabInternal: {fileID: 644082675}
+--- !u!114 &1545117517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1545117516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621a3411043bc8d498a317a42255a55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    bar: {fileID: 0}
+    maxVal: 200
+    currentVal: 200
 --- !u!1 &1644002991
 GameObject:
   m_ObjectHideFlags: 0
