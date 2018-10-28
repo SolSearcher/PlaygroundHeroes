@@ -6,6 +6,8 @@ public class KnightController : PlayerController
 {
     public GameObject SwordCollidor;
     public bool isAttacking;
+    public bool isBlocking;
+    public GameObject Shield;
     private Animator animator;
     private Collider swordCollider;
 
@@ -15,6 +17,7 @@ public class KnightController : PlayerController
         base.Start();
         animator = GetComponent<Animator>();
         isAttacking = false;
+        isBlocking = false;
 	}
 	
 	// Update is called once per frame
@@ -24,12 +27,30 @@ public class KnightController : PlayerController
         if (Input.GetButtonDown("Dodge" + playerNum))
             Dodge();
 
+        if (Input.GetButton("Block"))
+            isBlocking = true;
+        else
+            isBlocking = false;
+
+        if(isBlocking)
+        {
+            Shield.SetActive(true);
+        }
+        else
+        {
+            Shield.SetActive(false);
+        }
+
         if (isDodging)
         {
             DodgeMover();
         }
-        else if(!isAttacking)
+        else if (!isAttacking)
+        {
+            if (isBlocking)
+                inputVector *= 0.5f;
             Move();
+        }
 
         if (inputVector.magnitude > .03f)
             animator.SetBool("Moving", true);
