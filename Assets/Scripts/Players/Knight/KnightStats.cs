@@ -11,6 +11,7 @@ public class KnightStats : EntityHealth {
 
     private void Awake()
     {
+        health.Initialize();
         energy.Initialize();
     }
 }
