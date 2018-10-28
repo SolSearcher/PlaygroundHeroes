@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EntityHealth : MonoBehaviour
         //print("CURVAL " + health.CurrentVal);
     }
 
+
     public bool TakeDamage(float amount)
     {
         //damaged = true;
@@ -28,6 +30,7 @@ public class EntityHealth : MonoBehaviour
         // Death Check
         if (health.CurrentVal <= 0)
         {
+            SceneManager.LoadScene("DeathScreen");
             return true; //killed em
         }
         return false;
