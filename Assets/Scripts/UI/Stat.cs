@@ -24,7 +24,7 @@ public class Stat
         set
         {
             //prevents values from going over max value and less than 0
-            this.currentVal = Mathf.Clamp(value,0,MaxVal);
+            this.currentVal = Mathf.Clamp(value,-30f,MaxVal);
             //sets the value for each bar to current value
 
             if(bar != null) // if the player has a bar update it. enemies won't

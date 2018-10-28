@@ -90,9 +90,10 @@ public class PlayerController : MonoBehaviour
 
     protected void Dodge()
     {
-        if (stamina > 0)
+        if (GetComponent<ArcherStats>().energy.CurrentVal > 0)
         {
-            stamina -= 22.5f;
+            //stamina -= 22.5f;
+            GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal - 40f, -30f, 100f);
             if (inputVector.magnitude > .03f)
             {
                 dodgeLocation = transform.position + inputVector.normalized * 4f;
