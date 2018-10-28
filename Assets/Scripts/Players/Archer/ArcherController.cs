@@ -13,6 +13,7 @@ public class ArcherController : PlayerController
     private Vector3 bowFirePos;
     private Quaternion bowFireRot;
     private bool firing;
+    private float arrowSpeed;
 	// Use this for initialization
 	protected new void Start ()
     {
@@ -21,6 +22,7 @@ public class ArcherController : PlayerController
         bowDownRot = Quaternion.Euler(166f, 97f, -20f);
         bowFirePos = new Vector3(-0.15f, 0.33f, 0.95f);
         bowFireRot = Quaternion.Euler(100f, 175f, 90f);
+        arrowSpeed = 10f;
 
         firing = false;
 	}
@@ -39,7 +41,10 @@ public class ArcherController : PlayerController
             newRotation.x = 90;
 
             Arrow.transform.rotation = Quaternion.Euler(newRotation);
-            Arrow.transform.position = transform.position + transform.forward;
+            Arrow.transform.position = transform.position;
+            GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 5f * Time.deltaTime, -30f, 100f);
+
+            arrowSpeed = Mathf.Clamp(arrowSpeed + (0.75f*90f) * Time.deltaTime, 0f, 100f);
         }
         else
         {
@@ -55,18 +60,18 @@ public class ArcherController : PlayerController
                 else
                     Move();
             }
+            GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
         }
-        GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
     }
 
     void GetInput()
     {
         CalculateInputVector();
-        if (Input.GetButtonDown("Fire" + playerNum) && GetComponent<ArcherStats>().energy.CurrentVal > 20f)
+        if (Input.GetButtonDown("Fire" + playerNum) && GetComponent<ArcherStats>().energy.CurrentVal > 10f)
         {
+            arrowSpeed = 10f;
             firing = true;
             Camera.playerControl = true;
-            GetComponent<ArcherStats>().energy.CurrentVal -= 20f;
             Bow.transform.localPosition = bowFirePos;
             Bow.transform.localRotation = bowFireRot;
 
@@ -74,17 +79,18 @@ public class ArcherController : PlayerController
             Vector3 newPosition = transform.position + transform.forward;
             Arrow = Instantiate(m_arrowPrefab, newPosition, Quaternion.Euler(90, newRotation.y, newRotation.z)) as GameObject;
         }
-        if (Input.GetButtonUp("Fire" + playerNum))
+        if (firing && Input.GetButtonUp("Fire" + playerNum))
         {
             firing = false;
             Camera.playerControl = false;
+            GetComponent<ArcherStats>().energy.CurrentVal -= 30f;
             Bow.transform.localPosition = bowDownPos;
             Bow.transform.localRotation = bowDownRot;
 
             if(Arrow != null)
             {
                 Arrow.GetComponent<ArrowCollisions>().fire();
-                Arrow.GetComponent<Rigidbody>().velocity = 50f * transform.forward;
+                Arrow.GetComponent<Rigidbody>().velocity = arrowSpeed * transform.forward;
             }
             
         }

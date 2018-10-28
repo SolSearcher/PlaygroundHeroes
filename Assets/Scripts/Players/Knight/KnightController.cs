@@ -10,12 +10,15 @@ public class KnightController : PlayerController
     private Animator animator;
     private Collider swordCollider;
 
+    private bool attackingAnim;
+
 	// Use this for initialization
 	protected void Start ()
     {
         base.Start();
         animator = GetComponent<Animator>();
         isAttacking = false;
+        attackingAnim = false;
 	}
 	
 	// Update is called once per frame
@@ -29,36 +32,54 @@ public class KnightController : PlayerController
             isBlocking = true;
         else
             isBlocking = false;
+        
+        if (isDodging)
+        {
+            DodgeMover();
+        }
+        else if (!attackingAnim)
+        {
+            if (isBlocking)
+                inputVector *= 0.5f;
+            Move();
 
-        if(isBlocking)
+            if (inputVector.magnitude > .03f)
+                animator.SetBool("Moving", true);
+            else
+                animator.SetBool("Moving", false);
+
+            if (Input.GetButtonDown("Fire1") && GetComponent<ArcherStats>().energy.CurrentVal > 15f)
+                Attack();
+        }
+        else
+        {
+            if (Camera.isLocked)
+            {
+                Vector3 lookAtPos = Camera.testEnemy.transform.position;
+                lookAtPos.y = transform.position.y;
+
+                transform.LookAt(lookAtPos);
+            }
+            transform.Translate(transform.forward * Time.deltaTime, Space.World);
+        }
+
+        if (isBlocking)
         {
             Shield.SetActive(true);
+            if (Camera.isLocked)
+            {
+                Vector3 lookAtPos = Camera.testEnemy.transform.position;
+                lookAtPos.y = transform.position.y;
+
+                transform.LookAt(lookAtPos);
+            }
         }
         else
         {
             Shield.SetActive(false);
         }
 
-        if (isDodging)
-        {
-            DodgeMover();
-        }
-        else if (!isAttacking)
-        {
-            if (isBlocking)
-                inputVector *= 0.5f;
-            Move();
-        }
-
-        if (inputVector.magnitude > .03f)
-            animator.SetBool("Moving", true);
-        else
-            animator.SetBool("Moving", false);
-
-        if(Input.GetButtonDown("Fire1") && GetComponent<ArcherStats>().energy.CurrentVal > 15f)
-            Attack();
-        
-        if(!isBlocking)
+        if (!isBlocking)
             GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
         else
             GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 5f * Time.deltaTime, -30f, 100f);
@@ -67,6 +88,7 @@ public class KnightController : PlayerController
     void Attack ()
     {
         animator.SetTrigger("Attack1Trigger");
+        attackingAnim = true;
     }
 
     void AttackStart()
@@ -80,5 +102,10 @@ public class KnightController : PlayerController
     {
         isAttacking = false;
         SwordCollidor.SetActive(false);
+    }
+
+    void AnimationOver()
+    {
+        attackingAnim = false;
     }
 }

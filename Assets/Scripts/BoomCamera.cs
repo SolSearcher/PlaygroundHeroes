@@ -15,7 +15,7 @@ public class BoomCamera : MonoBehaviour
     public float focusHeight = 1f;
     public bool playerControl = false;
 
-    private bool isLocked;
+    public bool isLocked;
     private int playerNum;
 
     private void Start()
@@ -48,7 +48,10 @@ public class BoomCamera : MonoBehaviour
             focus.transform.rotation = Quaternion.Lerp(focus.transform.rotation, targetRotation, 0.05f);
 
             if (playerNum == 2)
+            {
                 isLocked = false;
+                focus.transform.rotation = targetRotation;
+            }
         }
 
         //Calculate the position of the camera by getting the focus's forward vector,
