@@ -10,14 +10,15 @@ public class BossHammer : MonoBehaviour {
     {
         if (LEEROYJENKINS.isAttacking)
         {
-            LEEROYJENKINS.isAttacking = false;
-            this.gameObject.SetActive(false);
+            //LEEROYJENKINS.isAttacking = false;
+            //this.gameObject.SetActive(false);
 
             if (other.gameObject.tag == "Player")
             {
-                print("HITTING PLAYER");
-                if (other.gameObject.GetComponent<EntityHealth>() != null)
+                PlayerController controller = other.gameObject.GetComponent<PlayerController>();
+                if (other.gameObject.GetComponent<EntityHealth>() != null && !controller.isInvuln())
                 {
+                    print("HITTING PLAYER");
                     if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(LEEROYJENKINS.m_attackDamage))
                     {
                         Destroy(other.gameObject);

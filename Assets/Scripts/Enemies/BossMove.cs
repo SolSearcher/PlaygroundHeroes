@@ -14,12 +14,18 @@ public class BossMove : MonoBehaviour {
 
     public float m_attackRange = 10f;
     public float m_attackDamage = 30f;
+    public float m_waitTime = 1f;
+
+    private float currWaitTime;
+    private bool isWaiting;
 
     // Use this for initialization
     void Start () {
         //start walk
         m_Animator = GetComponent<Animator>();
         isAttacking = false;
+        isWaiting = false;
+        currWaitTime = 0f;
 
         //gets players
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -29,19 +35,27 @@ public class BossMove : MonoBehaviour {
     void Update () {
         chooseTarget();
 
+        if (isWaiting)
+            currWaitTime += Time.deltaTime;
+
+        if (currWaitTime > m_waitTime)
+            isWaiting = false;
+
         if (!isAttacking) { 
-            if(distTo(target) < m_attackRange)
+            if(!(distTo(target) < m_attackRange))
+            {
+                move();
+                m_Animator.SetBool("Moving", true);
+            }
+            else if (!isWaiting)
             {
                 isAttacking = true;
                 m_Animator.SetBool("Moving", false);
                 m_Animator.SetBool("Attack1Trigger", true);
             }
-            else
-            {
-                move();
-                m_Animator.SetBool("Moving", true);
-            }
         }
+
+        transform.LookAt(target.GetComponent<Transform>().position);
     }
 
 
@@ -81,6 +95,8 @@ public class BossMove : MonoBehaviour {
     void EndAttack()
     {
         isAttacking = false;
+        isWaiting = true;
+        currWaitTime = 0f;
         hammerCollider.SetActive(false);
         //SwordCollidor.SetActive(false);
     }

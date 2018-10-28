@@ -110,6 +110,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool isInvuln()
+    {
+        return isDodging || isBlocking;
+    }
+
+    public bool isDodgingCheck()
+    {
+        return isDodging;
+    }
+    public bool isBlockingCheck()
+    {
+        return isBlocking;
+    }
+
     /*
      * Removes val health from the health pool (clamping between 0 and 100
      * input float val: amount of health to be removed
