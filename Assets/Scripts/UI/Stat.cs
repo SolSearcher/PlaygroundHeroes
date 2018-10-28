@@ -45,7 +45,10 @@ public class Stat
         set
         {
             this.maxVal = value;
-            bar.MaxValue = maxVal;
+            if (bar != null)
+            {
+                bar.MaxValue = maxVal;
+            }
         }
     }
 
