@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 136027322286370750}
   - component: {fileID: 114996195644601066}
   - component: {fileID: 54250901213869932}
+  - component: {fileID: 114119541560578386}
   m_Layer: 0
   m_Name: Archer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1007141068916312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0.9, z: -12.09}
+  m_LocalPosition: {x: -0.8736643, y: 0.77279, z: -19.53}
   m_LocalScale: {x: 0.77279, y: 0.77279, z: 0.77279}
   m_Children:
   - {fileID: 4309294337355502}
@@ -174,6 +175,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &114119541560578386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007141068916312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552ae342ac88ec8489999beaca970e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    bar: {fileID: 0}
+    maxVal: 100
+    currentVal: 100
+  energy:
+    bar: {fileID: 0}
+    maxVal: 100
+    currentVal: 100
 --- !u!114 &114996195644601066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,7 +210,8 @@ MonoBehaviour:
   speed: 10
   _moveSpeedModifier: 500
   Bow: {fileID: 1548542776168470}
-  m_arrowPrefab: {fileID: 0}
+  m_arrowPrefab: {fileID: 1601480604293226, guid: 4f82dd4f6db8ea94b9160717779298f5,
+    type: 2}
 --- !u!136 &136027322286370750
 CapsuleCollider:
   m_ObjectHideFlags: 1

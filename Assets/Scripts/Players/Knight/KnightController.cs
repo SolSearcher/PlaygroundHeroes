@@ -38,7 +38,7 @@ public class KnightController : PlayerController
 
         if(Input.GetButtonDown("Fire1") && GetComponent<ArcherStats>().energy.CurrentVal > 40)
             Attack();
-
+            
         GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
     }
 
