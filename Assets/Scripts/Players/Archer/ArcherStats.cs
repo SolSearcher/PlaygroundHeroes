@@ -13,4 +13,9 @@ public class ArcherStats : EntityHealth
         health.Initialize();
         energy.Initialize();
     }
+
+    public void blockDamage(float val)
+    {
+        energy.CurrentVal = Mathf.Clamp(energy.CurrentVal - val, 0f, 100f);
+    }
 }
