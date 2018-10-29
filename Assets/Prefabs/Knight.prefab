@@ -1674,7 +1674,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1659934843836332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.824424, y: -0.13525969, z: -17.5}
+  m_LocalPosition: {x: 8.721831, y: 0.05, z: -20.061127}
   m_LocalScale: {x: 0.54913557, y: 0.54913557, z: 0.54913557}
   m_Children:
   - {fileID: 4093279695758088}
@@ -1812,12 +1812,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed by
-    Humanoid clips.\n\tTransform 'B_Pelvis'\n\tTransform 'Motion'\n\tTransform 'B_R_Forearm'\n\tTransform
-    'B_Pelvis'\n\tTransform 'B_R_Calf'\n\tTransform 'B_Spine1'\n\tTransform 'B_L_Forearm'\n\tTransform
-    'B_Spine'\n\tTransform 'B_Neck'\n\tTransform 'B_L_Calf'\n\tand more ...\n\tFrom
-    animation clip 'ForwardDodge'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

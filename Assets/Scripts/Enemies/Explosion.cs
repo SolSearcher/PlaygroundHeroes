@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
 {
 
     public float m_lifetime = 1;
-    public float m_damage = 1f;
+
     protected void Start()
     {
         Destroy(gameObject, m_lifetime);
@@ -21,7 +21,7 @@ public class Explosion : MonoBehaviour
             print("HITTING PLAYER");
             if (other.gameObject.GetComponent<EntityHealth>() != null)
             {
-                if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(m_damage))
+                if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(20))
                 {
                     Destroy(other.gameObject);
                 }

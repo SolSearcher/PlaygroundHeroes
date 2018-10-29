@@ -9,45 +9,44 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1486028721705514}
+  m_RootGameObject: {fileID: 1577099313351136}
   m_IsPrefabAsset: 1
---- !u!1 &1486028721705514
+--- !u!1 &1577099313351136
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4702896655016606}
-  - component: {fileID: 33274659637044744}
-  - component: {fileID: 23162725886004796}
-  - component: {fileID: 136737576039742086}
+  - component: {fileID: 4862050564381722}
+  - component: {fileID: 33006184995902262}
+  - component: {fileID: 23964591005159670}
   m_Layer: 0
-  m_Name: MushroomSpawner
-  m_TagString: Mushroom
+  m_Name: cystal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4702896655016606
+--- !u!4 &4862050564381722
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1486028721705514}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7278671, y: -4.5105753, z: 10.336445}
-  m_LocalScale: {x: 36.662582, y: 28.251375, z: 36.662582}
+  m_GameObject: {fileID: 1577099313351136}
+  m_LocalRotation: {x: 0.9827554, y: -0, z: -0, w: 0.18491015}
+  m_LocalPosition: {x: 20.2, y: 13.8, z: -23.63}
+  m_LocalScale: {x: 47.45565, y: 126.39812, z: 47.45565}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23162725886004796
+  m_LocalEulerAnglesHint: {x: 158.688, y: -0.000015258789, z: -0.000015258789}
+--- !u!23 &23964591005159670
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1486028721705514}
+  m_GameObject: {fileID: 1577099313351136}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +56,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: e68a8fda93cbd8e49975a38ff04379e8, type: 2}
+  - {fileID: 2100000, guid: ee0e8e4ae4135444bbae5d56c5b030da, type: 3}
+  - {fileID: 2100002, guid: ee0e8e4ae4135444bbae5d56c5b030da, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,23 +77,10 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33274659637044744
+--- !u!33 &33006184995902262
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1486028721705514}
-  m_Mesh: {fileID: 4300000, guid: be861d0078c479042a83f45dee5f4286, type: 3}
---- !u!136 &136737576039742086
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1486028721705514}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.012133479
-  m_Height: 0.031491894
-  m_Direction: 1
-  m_Center: {x: 0.000035366833, y: -0.007362389, z: -0.0009392427}
+  m_GameObject: {fileID: 1577099313351136}
+  m_Mesh: {fileID: 4300000, guid: ee0e8e4ae4135444bbae5d56c5b030da, type: 3}
