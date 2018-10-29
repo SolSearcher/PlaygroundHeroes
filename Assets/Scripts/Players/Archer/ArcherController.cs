@@ -43,7 +43,7 @@ public class ArcherController : PlayerController
             newRotation.x = 90;
 
             Arrow.transform.rotation = Quaternion.Euler(newRotation);
-            Arrow.transform.position = transform.position;
+            //Arrow.transform.position = transform.position;
             GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 5f * Time.deltaTime, -30f, 100f);
 
             arrowSpeed = Mathf.Clamp(arrowSpeed + (0.75f*90f) * Time.deltaTime, 0f, 100f);
@@ -85,7 +85,7 @@ public class ArcherController : PlayerController
             animator.SetBool("Moving", false);
 
             Vector3 newRotation = transform.rotation.eulerAngles;
-            Vector3 newPosition = transform.position + transform.forward;
+            Vector3 newPosition = transform.position + 0.8f*transform.up;
             Arrow = Instantiate(m_arrowPrefab, newPosition, Quaternion.Euler(90, newRotation.y, newRotation.z)) as GameObject;
         }
         if (firing && Input.GetButtonUp("Fire" + playerNum))

@@ -24,17 +24,18 @@ public class ArrowCollisions : MonoBehaviour {
                     Destroy(other.gameObject);
                 }
             }
+            Destroy(this.gameObject);
         }
         if (other.gameObject.tag == "Player")
         {
-            print("HITTING PLAYER");
+            /*print("HITTING PLAYER");
             if (other.gameObject.GetComponent<EntityHealth>() != null)
             {
                 if (other.gameObject.GetComponent<EntityHealth>().TakeDamage(20))
                 {
                     Destroy(other.gameObject);
                 }
-            }
+            }*/
         }
     }
     

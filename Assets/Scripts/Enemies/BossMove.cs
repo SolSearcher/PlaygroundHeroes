@@ -51,6 +51,7 @@ public class BossMove : MonoBehaviour {
             }
             else if (!isWaiting)
             {
+                transform.LookAt(target.transform.position);
                 isAttacking = true;
                 m_Animator.SetBool("Moving", false);
                 m_Animator.SetBool("Attack1Trigger", true);
