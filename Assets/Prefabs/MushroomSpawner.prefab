@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4702896655016606}
   - component: {fileID: 33274659637044744}
   - component: {fileID: 23162725886004796}
+  - component: {fileID: 136737576039742086}
   m_Layer: 0
   m_Name: MushroomSpawner
   m_TagString: Mushroom
@@ -34,8 +35,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486028721705514}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.355, y: -0.26, z: -0.10557}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.7278671, y: -4.5105753, z: 10.336445}
   m_LocalScale: {x: 36.662582, y: 28.251375, z: 36.662582}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486028721705514}
   m_Mesh: {fileID: 4300000, guid: be861d0078c479042a83f45dee5f4286, type: 3}
+--- !u!136 &136737576039742086
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486028721705514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.012133479
+  m_Height: 0.031491894
+  m_Direction: 1
+  m_Center: {x: 0.000035366833, y: -0.007362389, z: -0.0009392427}
