@@ -11,10 +11,7 @@ public class MushroomSpawner : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        mushroom = m_MushroomPrefab;
-
-        mushroom.GetComponent<EnemyFollow>().enabled = false;
-        Instantiate(mushroom, transform.position, Quaternion.identity);
+        SpawnMushroom(transform.position);
     }
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +19,14 @@ public class MushroomSpawner : MonoBehaviour {
 
 
 	}
+
+    public void SpawnMushroom(Vector3 position)
+    {
+        mushroom = m_MushroomPrefab;
+
+        mushroom.GetComponent<EnemyFollow>().enabled = false;
+        Instantiate(mushroom, position, Quaternion.identity);
+    }
 
 
 }
