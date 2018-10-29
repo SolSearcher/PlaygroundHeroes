@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArcherController : PlayerController
 {
-    public GameObject Bow;
+    //public GameObject Bow;
     public GameObject m_arrowPrefab;
     private GameObject Arrow;
 
@@ -14,8 +14,9 @@ public class ArcherController : PlayerController
     private Quaternion bowFireRot;
     private bool firing;
     private float arrowSpeed;
-	// Use this for initialization
-	protected new void Start ()
+    private Animator animator;
+    // Use this for initialization
+    protected new void Start ()
     {
         base.Start();
         bowDownPos = new Vector3(-0.2f, -0.13f, 0.78f);
@@ -23,6 +24,7 @@ public class ArcherController : PlayerController
         bowFirePos = new Vector3(-0.15f, 0.33f, 0.95f);
         bowFireRot = Quaternion.Euler(100f, 175f, 90f);
         arrowSpeed = 10f;
+        animator = GetComponent<Animator>();
 
         firing = false;
 	}
@@ -58,7 +60,13 @@ public class ArcherController : PlayerController
                     DodgeMover();
                 }
                 else
+                {
                     Move();
+                    if (inputVector.magnitude > .03f)
+                        animator.SetBool("Moving", true);
+                    else
+                        animator.SetBool("Moving", false);
+                }
             }
             GetComponent<ArcherStats>().energy.CurrentVal = Mathf.Clamp(GetComponent<ArcherStats>().energy.CurrentVal + 20f * Time.deltaTime, -30f, 100f);
         }
@@ -72,8 +80,9 @@ public class ArcherController : PlayerController
             arrowSpeed = 10f;
             firing = true;
             Camera.playerControl = true;
-            Bow.transform.localPosition = bowFirePos;
-            Bow.transform.localRotation = bowFireRot;
+            //Bow.transform.localPosition = bowFirePos;
+            //Bow.transform.localRotation = bowFireRot;
+            animator.SetBool("Moving", false);
 
             Vector3 newRotation = transform.rotation.eulerAngles;
             Vector3 newPosition = transform.position + transform.forward;
@@ -84,8 +93,8 @@ public class ArcherController : PlayerController
             firing = false;
             Camera.playerControl = false;
             GetComponent<ArcherStats>().energy.CurrentVal -= 30f;
-            Bow.transform.localPosition = bowDownPos;
-            Bow.transform.localRotation = bowDownRot;
+            //Bow.transform.localPosition = bowDownPos;
+            //Bow.transform.localRotation = bowDownRot;
 
             if(Arrow != null)
             {
