@@ -24,7 +24,7 @@ public class EnemyFollow : MonoBehaviour
 
     Animator m_Animator;
     Renderer renderer;
-    Material mat;
+    public Material mat;
 
 
     bool primed = false;
