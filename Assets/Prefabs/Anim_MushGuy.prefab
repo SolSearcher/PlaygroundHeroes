@@ -743,7 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_explosion: {fileID: 1121913258537768, guid: d694ba978e372074db3572d3688878cd,
     type: 2}
-  cap: {fileID: 0}
+  cap: {fileID: 1486028721705514, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
   m_attackRange: 2
   m_fuseTimer: 25
   m_fuseTickAmount: 5

@@ -647,6 +647,11 @@ Prefab:
       propertyPath: testEnemy
       value: 
       objectReference: {fileID: 1967717678}
+    - target: {fileID: 114815005104923622, guid: 6c534e18d3b5b4a45a457e53a6ddcff2,
+        type: 2}
+      propertyPath: focusHeight
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c534e18d3b5b4a45a457e53a6ddcff2, type: 2}
   m_IsPrefabAsset: 0
@@ -3001,6 +3006,11 @@ Prefab:
       propertyPath: testEnemy
       value: 
       objectReference: {fileID: 1967717678}
+    - target: {fileID: 114815005104923622, guid: 6c534e18d3b5b4a45a457e53a6ddcff2,
+        type: 2}
+      propertyPath: focusHeight
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c534e18d3b5b4a45a457e53a6ddcff2, type: 2}
   m_IsPrefabAsset: 0
