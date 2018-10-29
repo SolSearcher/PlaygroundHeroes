@@ -114,52 +114,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1630496
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 63794392}
-    m_Modifications:
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4.8332443
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4.5105753
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 11.620639
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702896655016606, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_RootOrder
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 1486028721705514, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-      propertyPath: m_Name
-      value: MushroomSpawner (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 39c87363c9beb2c47a74e0d96a4187f3, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &7225605
 GameObject:
   m_ObjectHideFlags: 0
