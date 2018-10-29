@@ -8,6 +8,7 @@ public class EnemyFollow : MonoBehaviour
     //public GameObject _player0;
     //public GameObject _player1;
     public GameObject m_explosion;
+    public GameObject cap;
 
     //Attack tweak variables
     public float m_attackRange = 1;
@@ -30,6 +31,7 @@ public class EnemyFollow : MonoBehaviour
     bool primed = false;
     bool attacking = false;
     bool active = true;
+    bool exploded = false;
 
     public float speed = .5f;
     private float startTime;
@@ -37,7 +39,7 @@ public class EnemyFollow : MonoBehaviour
     private float journeyLength = 1f;
     private bool comingUP = false;
 
-    Vector3 comeFromPos = new Vector3(0,0,0);
+    Vector3 comeFromPos = new Vector3(0, 0, 0);
     Vector3 goToPos = new Vector3(0, 0, 0);
     public Vector3 underGroundDist = new Vector3(0, -1, 0);
 
@@ -90,7 +92,7 @@ public class EnemyFollow : MonoBehaviour
             float fracJourney = distCovered / journeyLength;
 
             transform.position = Vector3.Lerp(comeFromPos, goToPos, fracJourney);
-            if(transform.position == goToPos)
+            if (transform.position == goToPos)
             {
                 //Starts walking at the player and running those scripts
                 comingUP = false;
@@ -106,7 +108,7 @@ public class EnemyFollow : MonoBehaviour
                 if (fuseTime())
                 {
                     //Boom
-
+                    exploded = true;
                     //print("Boom");
                     Instantiate(m_explosion, transform.position, Quaternion.identity);
                     Destroy(gameObject, m_lifetime);
@@ -139,13 +141,13 @@ public class EnemyFollow : MonoBehaviour
     private bool fuseTime()
     {
         //if we've counted down 
-        if(m_fuseTimer <= 0)  //if fuse has run down
+        if (m_fuseTimer <= 0)  //if fuse has run down
         {
             //print("BOOMMMMM");
             mat.SetColor("_EmissionColor", tickColor); // Tick on
             return true;
         }
-        
+
         //Boom
         if (currentFuseTime <= 0) // if time between ticks has run down
         {
@@ -173,7 +175,7 @@ public class EnemyFollow : MonoBehaviour
 
     // checks if it's close to a player then starts the attack logic
     private bool inAttackRange() {
-        if(distTo(chooseTarget()) < m_attackRange)
+        if (distTo(chooseTarget()) < m_attackRange)
         {
             return true;
         }
@@ -194,7 +196,7 @@ public class EnemyFollow : MonoBehaviour
         objs = GameObject.FindGameObjectsWithTag("Player");
         GameObject closestPlayer = objs[0];
 
-        
+
 
         if (distTo(objs[0]) < distTo(objs[1]))
         {
@@ -210,5 +212,15 @@ public class EnemyFollow : MonoBehaviour
     private float distTo(GameObject player)
     {
         return Vector3.Distance(player.GetComponent<Transform>().position, this.GetComponent<Transform>().position);
+    }
+
+    public void OnDestroy()
+    {
+        Debug.Log("Destroyed");
+        if (!exploded)
+        {
+            Instantiate(cap, transform.position, Quaternion.identity);
+            Debug.Log("Made?");
+        }
     }
 }
