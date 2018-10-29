@@ -29,6 +29,17 @@ public class EnemyFollow : MonoBehaviour
 
     bool primed = false;
     bool attacking = false;
+    bool active = true;
+
+    public float speed = .5f;
+    private float startTime;
+
+    private float journeyLength = 1f;
+    private bool comingUP = false;
+
+    Vector3 comeFromPos = new Vector3(0,0,0);
+    Vector3 goToPos = new Vector3(0, 0, 0);
+    public Vector3 underGroundDist = new Vector3(0, -1, 0);
 
 
     //private GameObject target;
@@ -39,54 +50,91 @@ public class EnemyFollow : MonoBehaviour
         //Variable setup
         currentFuseTime = m_fuseTimer;
         primed = false;
+        active = false;  //=============================================================TESTING=====================
 
+        //Gets the render material to be used for the blinking red emission
         renderer = GetComponentInChildren<Renderer>();
         mat = renderer.material;
 
-       // GetComponentInChildren<Renderer>();
-        //GetComponent<>
-
         //Start walk animation
         m_Animator = GetComponent<Animator>();
-        m_Animator.Play("walk");
+        //m_Animator.Play("walk");
 
+        activateMushroom();
+    }
+
+    public void activateMushroom()
+    {
+        //Animation stop
+        m_Animator.enabled = false;
+        startTime = Time.time;
+
+        goToPos = transform.position; // Sets position where you want to be (above the ground)
+        transform.position += underGroundDist; // Moves the mushroom down
+        comeFromPos = transform.position; // Sets the starting position to where it is underground
+
+        journeyLength = Vector3.Distance(goToPos, comeFromPos);
+
+        comingUP = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attacking)
+        if (comingUP)
         {
-            if (fuseTime())
-            {
-                //Boom
+            // Distance moved = time * speed.
+            float distCovered = (Time.time - startTime) * speed;
 
-                //print("Boom");
-                Instantiate(m_explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject, m_lifetime);
+            // Fraction of journey completed = current distance divided by total distance.
+            float fracJourney = distCovered / journeyLength;
 
-                //attacking = false;
-            }
-            //print("already Attacking");
-        }
-        else
-        {
-            if (inAttackRange()) // Checks range then starts logic
+            transform.position = Vector3.Lerp(comeFromPos, goToPos, fracJourney);
+            if(transform.position == goToPos)
             {
-               // print("attacking start!!");
-                attacking = true;
-
-                // To Do!
-                // Need to have an attack function that will return something when the animation is played out
-            }
-            else // If you're not close enough toi attack, walk at the nearest player
-            {
-                walkAtPlayer();
+                //Starts walking at the player and running those scripts
+                comingUP = false;
+                active = true;
+                m_Animator.enabled = true;
             }
         }
-        
 
+        if (active)
+        {
+            if (attacking)
+            {
+                if (fuseTime())
+                {
+                    //Boom
+
+                    //print("Boom");
+                    Instantiate(m_explosion, transform.position, Quaternion.identity);
+                    Destroy(gameObject, m_lifetime);
+
+                    //attacking = false;
+                }
+                //print("already Attacking");
+            }
+            else
+            {
+                if (inAttackRange()) // Checks range then starts logic
+                {
+                    // print("attacking start!!");
+                    m_Animator.enabled = false;
+                    attacking = true;
+
+                    // To Do!
+                    // Need to have an attack function that will return something when the animation is played out
+                }
+                else // If you're not close enough toi attack, walk at the nearest player
+                {
+                    walkAtPlayer();
+                }
+            }
+        }
     }
+
+
 
     private bool fuseTime()
     {

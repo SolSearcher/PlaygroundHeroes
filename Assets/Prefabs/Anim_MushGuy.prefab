@@ -670,7 +670,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: efaed380207a8cd43a70474999d15687, type: 2}
+  - {fileID: 2100000, guid: 7eb0493d304f2574582856d3a74997ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1185096987773066}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4168a28dacee294459e377b02c6fe0e6, type: 3}
   m_Name: 
@@ -748,7 +748,10 @@ MonoBehaviour:
   m_fuseTickAmount: 5
   m_fuseThreshold: 100
   m_lifetime: 1
-  tickColor: {r: 0.375, g: 0, b: 0, a: 1}
+  tickColor: {r: 0.745283, g: 0, b: 0, a: 1}
+  mat: {fileID: 2100000, guid: 7eb0493d304f2574582856d3a74997ee, type: 2}
+  speed: 0.5
+  underGroundDist: {x: 0, y: -0.75, z: 0}
 --- !u!136 &136777532761560222
 CapsuleCollider:
   m_ObjectHideFlags: 1
