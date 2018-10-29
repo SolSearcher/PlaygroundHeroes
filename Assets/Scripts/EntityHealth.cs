@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class EntityHealth : MonoBehaviour
 {
     [SerializeField]
@@ -21,16 +22,16 @@ public class EntityHealth : MonoBehaviour
 
     public bool TakeDamage(float amount)
     {
-        //damaged = true;
-        //Debug.Log(currentHealth);
-        //currentHealth -= amount;
         health.CurrentVal -= amount;
-        print("CurVal = " +health.CurrentVal);
-        //print("ouch, hp = " + currentHealth);
+
         // Death Check
         if (health.CurrentVal <= 0)
         {
-            SceneManager.LoadScene("DeathScreen");
+            //print(gameObject.tag);
+            if(gameObject.tag == "Player")
+            {
+                SceneManager.LoadScene("DeathScreen");
+            }
             return true; //killed em
         }
         return false;
