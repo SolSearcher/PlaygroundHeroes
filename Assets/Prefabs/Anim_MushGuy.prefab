@@ -478,7 +478,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1185096987773066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53, y: -0.09, z: -3.14}
+  m_LocalPosition: {x: 11.618, y: -0.13525969, z: -15.904795}
   m_LocalScale: {x: 6.0739856, y: 6.0739884, z: 6.0739884}
   m_Children:
   - {fileID: 4211875029079656}
@@ -743,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_explosion: {fileID: 1121913258537768, guid: d694ba978e372074db3572d3688878cd,
     type: 2}
+  cap: {fileID: 0}
   m_attackRange: 2
   m_fuseTimer: 25
   m_fuseTickAmount: 5
@@ -761,10 +762,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.06
+  m_Radius: 0.077163376
   m_Height: 0.24
   m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: 0.0029126075, y: 0.1, z: 0}
 --- !u!137 &137820773501171668
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

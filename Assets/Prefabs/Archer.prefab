@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 95294789698596566}
   - component: {fileID: 114996195644601066}
   - component: {fileID: 114119541560578386}
+  - component: {fileID: 136382779454001924}
+  - component: {fileID: 54133636028249580}
   m_Layer: 0
   m_Name: Archer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1285,7 +1287,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1007141068916312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2206, y: -0.172, z: -28.431}
+  m_LocalPosition: {x: 2.2205503, y: -0.161, z: -28.425678}
   m_LocalScale: {x: 0.48803958, y: 0.48803958, z: 0.48803958}
   m_Children:
   - {fileID: 4529131679143484}
@@ -1661,6 +1663,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1548542776168470}
   m_Mesh: {fileID: 4300000, guid: c3972562e865e5d4c84dff2ee012a91d, type: 3}
+--- !u!54 &54133636028249580
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007141068916312}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 100
+  m_AngularDrag: 0.9
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!95 &95294789698596566
 Animator:
   serializedVersion: 3
@@ -1733,6 +1750,19 @@ MonoBehaviour:
   _moveSpeedModifier: 500
   m_arrowPrefab: {fileID: 1601480604293226, guid: 4f82dd4f6db8ea94b9160717779298f5,
     type: 2}
+--- !u!136 &136382779454001924
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1007141068916312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.9800067
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2693663, z: 0}
 --- !u!137 &137738261745605482
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
